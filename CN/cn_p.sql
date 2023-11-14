@@ -89,33 +89,27 @@ CREATE TABLE requestAprAuthDT (
     dateNtime VARCHAR(100) DEFAULT ' '
 );
 
-DROP TABLE requestAprAuthDT;
+-- DROP TABLE requestAprAuthDT;
 
-ALTER TABLE requests
-ALTER COLUMN reasonToCancel SET DEFAULT '-';
-
-INSERT INTO requests (username, usertype, departureFrom, departureTo, departureTiming, departureDate, Capacity, Reason)
-VALUES ('manpreet.singh', 'Visitor', 'Motera', 'IIT Gandhinagar', '11:00PM', '2023-10-11', 1, 'N/A');
+-- ALTER TABLE requests
+-- ALTER COLUMN reasonToCancel SET DEFAULT '-';
 
 
-INSERT INTO transportManagement.login(userID, pwd) VALUES
-('harry', 'harry@123');
 
-INSERT INTO transportManagement.adminlogin(userID, pwd) VALUES
-('harry', 'harry@123');
+-- INSERT INTO transportManagement.login(userID, pwd) VALUES
+-- ('harry', 'harry@123');
 
-INSERT INTO transportManagement.authlogin(userID, pwd) VALUES
-('naval', 'naval@123');
+-- INSERT INTO transportManagement.adminlogin(userID, pwd) VALUES
+-- ('harry', 'harry@123');
+
+-- INSERT INTO transportManagement.authlogin(userID, pwd) VALUES
+-- ('naval', 'naval@123');
 
 SHOW TABLES;
-DROP TABLE requests;
-DROP TABLE requestsAuth;
 SELECT * FROM tempUsers;
 SELECT * FROM adminlogin;
 SELECT * FROM newUsers;
 SELECT * FROM requestsAuth;
 SELECT * FROM requestAprAdminDT;
 SELECT * FROM requests;
-DROP TABLE requests;
 SELECT * FROM authlogin;
-SELECT * FROM login WHERE userID = 'harry';
