@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>IITGN transportManagement</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .dashboardth {
+            display: flex;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100vh;
+            margin: 0px;
+            padding: 0px;
+        }
+        .navbarth {
+            background-color: rgba(47, 47, 47, 0.966);
+            height: 80px;
+            z-index: 0;
+            margin: 0px;
+            padding: 0px;
+        }
+        .sidebarth {
+            width: 200px;
+            background-color: rgba(47, 47, 47, 0.966);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: none;
+        }
+
+        .contentth {
+            flex: 1;
+            padding: 20px;
+            font: 15px lato, Aerial, sans-serif;
+            background-color: #fefefe;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        .sidebar-buttonth {
+            background-color: #535456;
+            color: rgb(255, 255, 255);
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin: 5px 0;
+            font: 15px lato, Aerial, sans-serif;
+            text-align: left;
+            border-radius: 20px;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .sidebar-buttonth:hover {
+            background-color: #555;
+            transform: translateX(5px);
+        }
+
+        .request-main-wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 60px;
+          padding-left: 35px;
+
+        }
+      
+        .request-form-wrapper {
+          margin: 0 auto;
+          max-width: 700px;
+          width: 100%;
+          background: #ffffff;
+        }
+      
+        .request-input-flex {
+          display: flex;
+          gap: 50px;
+          margin-bottom: 22px;
+        }
+        .request-input-flex > div{
+          width: 50%;
+          display: flex;
+          flex-direction: column-reverse;
+        }
+        .request-textarea {
+          display: flex;
+          flex-direction: column-reverse;
+        }
+      
+        .request-form-input {
+          width: 100%;
+          padding-bottom: 10px;
+          border: none;
+          border-bottom: 1px solid #343a40;
+          background: #ffffff;
+          font-weight: 500;
+          font-size: 16px;
+          color: #000000;
+          outline: none;
+          resize: none;
+        }
+        .request-form-input::placeholder {
+          color: #adadad;
+        }
+        .request-form-input:focus {
+          border-color: #6A64F1;
+        }
+        .request-form-label {
+          color: #07074D;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 24px;
+          display: block;
+          margin-bottom: 18px;
+        }
+        .request-form-input:focus + .request-form-label {
+          color: #6A64F1;
+        }
+      
+        .request-btn {
+          font-size: 16px;
+          border-radius: 5px;
+          padding: 12px 25px;
+          border: none;
+          font-weight: 500;
+          background-color: #343a40;
+          color: rgb(255, 255, 255);
+          cursor: pointer;
+          margin-top: 25px;
+        }
+        .flash-messages{
+            font: 20px lato, Aerial, sans-serif;
+            text-align: center;
+        }
+      </style>
+	</head>
+<body>
+    <div class="navbarth">
+        <h1 style = "color: #ffffff; text-align: right; padding: 25px; margin: 0px; margin-right: 20px; font: 24px lato, Aerial, sans-serif;">IITGN Transport Management</h1>
+    </div>
+    <div class="dashboardth">
+        <div class="sidebarth">
+            <h1 style="color: #fff; font: 30px lato, Aerial, sans-serif;padding-bottom: 10px;padding-left: 13px;padding-top: 0;">User Dashboard</h1>
+            <a href = "/user" class="sidebar-buttonth"><button style="background-color: transparent; border: none; color: rgb(255, 255, 255); text-align: left;">Home</button></a>
+            <a href = "/profile" class="sidebar-buttonth"><button style="background-color: transparent; border: none; color: rgb(255, 255, 255); text-align: left;">Profile</button></a>
+            <a href = "/generateRequest" class="sidebar-buttonth"><button style="background-color: transparent; border: none; color: rgb(255, 255, 255); text-align: left;">Generate request</button></a>
+            <a href = "/" class="sidebar-buttonth"><button style="background-color: transparent; border: none; color: rgb(255, 255, 255); text-align: left;">Standard Vehicles route</button></a>
+            <a href = "/logout" class="sidebar-buttonth"><button style="background-color: transparent; border: none; color: rgb(255, 255, 255); text-align: left;">Logout</button></a>
+        </div>
+ <div class = "contentth">   
+<div class="request-main-wrapper">
+    <div class="request-form-wrapper">
+      <form action="/generateRequest" method="POST">
+          <div class="request-input-flex">
+            <div>
+                <input
+                type="text"
+                name="departureFrom"
+                required
+                placeholder="Ahmedabad Airport"
+                class="request-form-input"
+                />
+                <label for="firstname" class="request-form-label"> Departure From </label>
+            </div>
+            <div>
+                <input
+                type="text"
+                name="departureTo"
+                required
+                placeholder="IIT Gandhinagar"
+                class="request-form-input"
+                />
+                <label for="lastname" class="request-form-label"> Departure To </label>
+            </div>
+          </div>
+          <div class="request-input-flex">
+            <div>
+                <input
+                type="text"
+                name="timing"
+                required
+                placeholder="i.e 10:00 AM"
+                class="request-form-input"
+                />
+                <label for="firstname" class="request-form-label"> Timing </label>
+            </div>
+            <div>
+                <input
+                type="text"
+                name="date"
+                placeholder="2024-10-24"
+                required
+                class="request-form-input"
+                />
+                <label for="lastname" class="request-form-label"> Date </label>
+            </div>
+          </div>
+          <div class="request-input-flex">
+            <div>
+                <input
+                type="text"
+                name="capacity"
+                required
+                placeholder="Number of peoples. (i.e. 1, 2 or 3)"
+                class="request-form-input"
+                />
+                <label class="request-form-label"> Capacity </label>
+            </div>
+          </div>
+          <div class="request-textarea">
+              <textarea
+                  rows="6"
+                  name="reason"
+                  id="message"
+                  required
+                  placeholder="Write your message..."
+                  class="request-form-input"
+              ></textarea>
+              <label for="message" class="request-form-label"> Purpose </label>
+          </div>
+          <button class="request-btn">
+              Request
+          </button>
+      </form>
+    </div>
+  </div>
+  <div class="flash-messages">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</div>
+  </div>
+  </div>
+</body>
+
+</html>

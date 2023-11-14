@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>IITGN transportManagement</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .dashboardth {
+            display: flex;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100vh;
+            margin: 0px;
+            padding: 0px;
+        }
+        .navbarth {
+            background-color: rgba(47, 47, 47, 0.966);
+            height: 80px;
+            z-index: 0;
+            margin: 0px;
+            padding: 0px;
+        }
+        .sidebarth {
+            width: 200px;
+            background-color: rgba(47, 47, 47, 0.966);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: none;
+        }
+
+        .contentth {
+            flex: 1;
+            padding: 20px;
+            font: 15px lato, Aerial, sans-serif;
+            background-color: #fefefe;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        .sidebar-buttonth {
+            background-color: #535456;
+            color: rgb(255, 255, 255);
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin: 5px 0;
+            font: 15px lato, Aerial, sans-serif;
+            text-align: left;
+            border-radius: 20px;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .sidebar-buttonth:hover {
+            background-color: #555;
+            transform: translateX(5px);
+        }
+
+        .formbold-main-wrapper {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 60px;
+          padding-left: 35px;
+
+        }
+      
+        .formbold-form-wrapper {
+          margin: 0 auto;
+          max-width: 700px;
+          width: 100%;
+          background: #ffffff;
+        }
+      
+        .formbold-input-flex {
+          display: flex;
+          gap: 50px;
+          margin-bottom: 22px;
+        }
+        .formbold-input-flex > div{
+          width: 50%;
+          display: flex;
+          flex-direction: column-reverse;
+        }
+        .formbold-textarea {
+          display: flex;
+          flex-direction: column-reverse;
+        }
+      
+        .formbold-form-input {
+          width: 100%;
+          padding-bottom: 10px;
+          border: none;
+          border-bottom: 1px solid #343a40;
+          background: #ffffff;
+          font-weight: 500;
+          font-size: 16px;
+          color: #000000;
+          outline: none;
+          resize: none;
+        }
+        .formbold-form-label {
+          color: #07074D;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 24px;
+          display: block;
+          margin-bottom: 18px;
+        }
+      
+        .formbold-btn {
+          font-size: 16px;
+          border-radius: 5px;
+          padding: 12px 25px;
+          border: none;
+          font-weight: 500;
+          background-color: #343a40;
+          color: rgb(255, 255, 255);
+          cursor: pointer;
+          margin-top: 25px;
+        }
+        .flash-messages{
+            font: 20px lato, Aerial, sans-serif;
+            text-align: center;
+        }
+      </style>
+	</head>
+<body>
+    <div class="navbarth">
+        <h1 style = "color: #ffffff; text-align: right; padding: 25px; margin: 0px; margin-right: 20px; font: 24px lato, Aerial, sans-serif;">IITGN Transport Management</h1>
+    </div>
+    <div class="dashboardth">
+        <div class="sidebarth">
+            <h1 style="color: #fff; font: 30px lato, Aerial, sans-serif;padding-bottom: 10px;padding-left: 13px;padding-top: 0;">User Dashboard</h1>
+            <a href = "/user" class="sidebar-buttonth"><button style="background-color: transparent; border: none; color: rgb(255, 255, 255); text-align: left;">Home</button></a>
+            <a href = "/" class="sidebar-buttonth"><button style="background-color: transparent; border: none; color: rgb(255, 255, 255); text-align: left;">Profile</button></a>
+            <a href = "/generateRequest" class="sidebar-buttonth"><button style="background-color: transparent; border: none; color: rgb(255, 255, 255); text-align: left;">Generate request</button></a>
+            <a href = "/" class="sidebar-buttonth"><button style="background-color: transparent; border: none; color: rgb(255, 255, 255); text-align: left;">Standard Vehicles route</button></a>
+            <a href = "/logout" class="sidebar-buttonth"><button style="background-color: transparent; border: none; color: rgb(255, 255, 255); text-align: left;">Logout</button></a>
+        </div>
+ <div class = "contentth"> 
+    <h1 style = "text-align: center; font: 30px lato, Aerial, sans-serif;">  Profile  </h1>  
+<div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+        {% for user in userDetails %}
+      <div>
+          <div class="formbold-input-flex">
+            <div>
+                <h3
+                class="formbold-form-input"
+                >{{user[0]}}</h3>
+                <label for="firstname" class="formbold-form-label"> Full Name </label>
+            </div>
+            <div>
+                <h3
+                class="formbold-form-input"
+                >{{user[4]}}</h3>
+                <label for="lastname" class="formbold-form-label"> Username </label>
+            </div>
+          </div>
+          <div class="formbold-input-flex">
+            <div>
+                <h3
+                class="formbold-form-input"
+                >{{user[1]}}</h3>
+                <label for="firstname" class="formbold-form-label"> Usertype </label>
+            </div>
+            <div>
+                <h3
+                class="formbold-form-input"
+                >{{user[2]}}</h3>
+                <label for="lastname" class="formbold-form-label"> Contact No. </label>
+            </div>
+          </div>
+          <div class="formbold-textarea">
+              <h3
+                  class="formbold-form-input"
+              >{{user[3]}}</h3>
+              <label for="message" class="formbold-form-label"> Email </label>
+          </div>
+          <button class="formbold-btn">
+              Edit Profile
+          </button>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  </div>
+  </div>
+</body>
+
+</html>

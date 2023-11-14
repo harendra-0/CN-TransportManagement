@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>IITGN transportManagement</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/static/style.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+	</head>
+	<body class="img" style="background-image: url(/static/bg.jpg);">
+		<header>
+			<nav class="navbar" style="padding-right: 0;">
+				<a href = "/">
+                    <div class="logo">
+                        <img src="/static/logo.jpeg" alt="Your Logo">
+                    </div>
+                    </a>
+				<div class="links">
+					<ul class="nav-links">
+						<li style = "color: black; font: 17px lato, Aerial, sans-serif;">CN Project Group 4 Leader Naval Jaggi</li>
+					</ul>
+				</div>
+			</nav>
+		</header>		
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Transport Management IITGN</h2>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-6 col-lg-4">
+					<div class="login-wrap p-0">
+		      	<h3 class="mb-4 text-center">ADMIN LOGIN</h3>
+		      	<form class="signin-form" method = "POST" action = "/adminLogin">
+		      		<div class="form-group">
+		      			<input type="text" class="form-control" name = "username" placeholder="Username" required>
+		      		</div>
+	            <div class="form-group">
+	              <input id="password" type="password" name = "password" class="form-control" placeholder="Password" required>
+	              <i class="password-toggle fa fa-eye field-icon toggle-password"  id="toggle-password"></i>
+	            </div>
+	            <div class="form-group">
+	            	<button type="submit" class="form-control btn btn-primary submit px-3">Log In</button>
+	            </div>
+	            <div class="form-group d-md-flex">
+	            	<div class="w-50">
+		            	<label class="checkbox-wrap checkbox-primary">Remember Me
+									  <input type="checkbox" checked>
+									  <span class="checkmark"></span>
+									</label>
+								</div>
+	            </div>
+	          </form>
+	          <p class="w-100 text-center">&mdash; - For Admins only - &mdash;</p>
+		      </div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<div class="flash-messages">
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				<ul>
+					{% for message in messages %}
+						<li>{{ message }}</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		{% endwith %}
+	</div>
+	<script>
+        $(document).ready(function() {
+            $("#toggle-password").click(function() {
+                var passwordInput = $("#password");
+                var passwordToggle = $("#toggle-password");
+
+                if (passwordInput.attr("type") === "password") {
+                    passwordInput.attr("type", "text");
+                    passwordToggle.removeClass("fa-eye");
+                    passwordToggle.addClass("fa-eye-slash");
+                } else {
+                    passwordInput.attr("type", "password");
+                    passwordToggle.removeClass("fa-eye-slash");
+                    passwordToggle.addClass("fa-eye");
+                }
+            });
+        });
+    </script>
+	</body>
+</html>
+
